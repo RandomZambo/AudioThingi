@@ -58,7 +58,7 @@ def ProcessTime(timestamp : str):
     timestamp = timestamp.replace(i, '')
   return timestamp
 
-def GetDict(total_data : str)
+def GetDict(total_data : str):
 	total_data = total_data.lower()
 
 	total_data_2 = total_data.split()
@@ -88,7 +88,7 @@ def SaveDict(dic : dict , name : str , timestamp : str):
 	with open(name + "_" + timestamp + '.txt', 'w') as file:
 		file.write(json.dumps(exDict))
 
-def DoEveryThing(name : str , file_path : str)
+def DoEveryThing(name : str , file_path : str):
 	now = datetime.now()
 	now = str(now)
 	total_data = GetTextFromAudio(file_path)
@@ -96,4 +96,4 @@ def DoEveryThing(name : str , file_path : str)
 	Dict = GetDict(total_data)
 	SaveDict(Dict , name , now)
 
-DoEveryThing("Abhilash" , "audio_only.wav")
+#DoEveryThing("Abhilash" , "audio_only.wav")
