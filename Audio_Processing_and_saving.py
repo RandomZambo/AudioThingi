@@ -102,4 +102,4 @@ def DoEveryThing(name : str , file_path : str):
 	Dict = GetDict(total_data)
 	SaveDict(Dict , name , now)
 
-DoEveryThing("Abhilash" , "audio_only.wav")
+#DoEveryThing("Abhilash" , "audio_only.wav")
