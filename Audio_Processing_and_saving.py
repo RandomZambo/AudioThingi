@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 from datetime import datetime 
+from tqdm import tqdm
 
 def mp3_to_wav(audio_file_name):
     if audio_file_name.split('.')[1] == 'mp3':
@@ -46,7 +47,7 @@ def GetTextFromAudio(file_name : str):
 
 	with audio_data as source :
 	  #time_in_seconds = getDuration(file_name)
-	  for i in range(int(int(time_in_seconds)/8)):
+	  for i in tqdm(range(int(int(time_in_seconds)/8))):
 	    r.adjust_for_ambient_noise(source , duration=0.1)
 	    audio = r.record(source , duration = 8)
 	    try :
