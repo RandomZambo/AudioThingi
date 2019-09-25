@@ -31,15 +31,21 @@ def getDuration(audio_file_name : str):
       return duration
 
 def GetTextFromAudio(file_name : str):
+	if file_name[-3:] == 'm4a':
+		m4a_to_wav(file_name)
+	elif file_name[-3:] == 'mp3':
+		mp3_to_wav(file_name)
 
-	audio_data = sr.AudioFile(file_name)
-	time_in_seconds = getDuration(file_name)
+	exact_file_name = file_name.split(".")[0]
+
+	audio_data = sr.AudioFile(exact_file_name + '.wav')
+	time_in_seconds = getDuration(exact_file_name + '.wav')
 
 	r = sr.Recognizer()
 	total_data = ""
 
 	with audio_data as source :
-	  time_in_seconds = getDuration(file_name)
+	  #time_in_seconds = getDuration(file_name)
 	  for i in range(int(int(time_in_seconds)/8)):
 	    r.adjust_for_ambient_noise(source , duration=0.1)
 	    audio = r.record(source , duration = 8)
@@ -96,4 +102,4 @@ def DoEveryThing(name : str , file_path : str):
 	Dict = GetDict(total_data)
 	SaveDict(Dict , name , now)
 
-#DoEveryThing("Abhilash" , "audio_only.wav")
+DoEveryThing("Abhilash" , "audio_only.wav")
